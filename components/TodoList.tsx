@@ -114,15 +114,19 @@ const Container = styled.div`
           fill: ${palette.deep_green};
         }
         .todo-button {
-          width: 20px;
-          height: 20px;
+          width: 25px;
+          height: 25px;
           border-radius: 50%;
-          border: 1px solid ${palette.gray};
+          border: 2px solid ${palette.gray};
           background-color: transparent;
           outline: none;
+          cursor: pointer;
         }
       }
     }
+  }
+  svg {
+    cursor: pointer;
   }
 `;
 

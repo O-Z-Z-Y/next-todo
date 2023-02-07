@@ -1,13 +1,16 @@
-// import { createStore, applyMiddleware, combineReducers } from "redux";
+import {
+  TypedUseSelectorHook,
+  useSelector as useReduxSelector,
+} from "react-redux";
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
-import { configureStore, combineReducers } from "@reduxjs/toolkit"
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import todo from "./todo";
 
 const rootReducer = combineReducers({
   todo: todo.reducer,
 });
 
-const reducer = (state, action) => {
+const reducer = (state: any, action: any) => {
   if (action.type === HYDRATE) {
     const nextState = {
       ...state, // use previous state
@@ -21,6 +24,9 @@ const reducer = (state, action) => {
 
 //* 스토어의 타입
 export type RootState = ReturnType<typeof rootReducer>;
+
+// * 타입 지원되는 커스텀 useSelector 만들기
+export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
 
 const initStore = () => {
   return configureStore({
